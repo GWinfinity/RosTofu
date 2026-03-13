@@ -1,8 +1,8 @@
 <div align="center">
 
-# 🐾 RosPaw
+# 🧊 RosTofu
 
-**ROS2 × CoPaw — Your AI Agent in Robotics World**
+**ROS2 × Tofu — Your Application in Robotics World**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![ROS2](https://img.shields.io/badge/ROS2-Humble%20%7C%20Jazzy-blue.svg)](https://docs.ros.org/)
@@ -15,16 +15,16 @@
 
 ---
 
-## 🤔 What is RosPaw?
+## 🤔 What is RosTofu?
 
-**RosPaw** bridges the gap between [CoPaw](https://github.com/copilot-extensions/copaw) AI assistant and the robotics world through ROS2. It wraps the copaw executable as a ROS2 node, enabling you to:
+**RosTofu** bridges the gap between your application and the robotics world through ROS2. It wraps any executable as a ROS2 node, enabling you to:
 
-- 🚀 **Launch & Control** — Start/stop/restart copaw via ROS2 services
+- 🚀 **Launch & Control** — Start/stop/restart your app via ROS2 services
 - 📊 **Monitor Status** — Real-time status publishing on ROS2 topics  
-- 🔗 **ROS2 Integration** — Seamlessly integrate copaw into your robotics stack
+- 🔗 **ROS2 Integration** — Seamlessly integrate your app into your robotics stack
 - 🖥️ **Cross-Platform** — Works on both Windows and Ubuntu
 
-Whether you're building a smart robot assistant or integrating AI capabilities into your ROS2 workflow, RosPaw provides the bridge you need.
+Whether you're building a smart robot application or integrating software into your ROS2 workflow, RosTofu provides the bridge you need.
 
 ---
 
@@ -32,9 +32,9 @@ Whether you're building a smart robot assistant or integrating AI capabilities i
 
 | Feature | Description |
 |---------|-------------|
-| 🎛️ **Service Interface** | Control copaw via `/start_copaw`, `/stop_copaw`, `/restart_copaw` services |
-| 📡 **Status Monitoring** | Track copaw state via `/copaw_status` topic |
-| 🔍 **Auto-Detection** | Automatically finds copaw in `.venv` or system PATH |
+| 🎛️ **Service Interface** | Control your app via `/start_tofu`, `/stop_tofu`, `/restart_tofu` services |
+| 📡 **Status Monitoring** | Track app state via `/tofu_status` topic |
+| 🔍 **Auto-Detection** | Automatically finds executable in `.venv` or system PATH |
 | ⚡ **Launch Files** | Ready-to-use ROS2 launch configurations |
 | 🐧 **Multi-Platform** | Native support for Windows and Linux |
 
@@ -51,8 +51,8 @@ Whether you're building a smart robot assistant or integrating AI capabilities i
 ### 1️⃣ Clone & Setup
 
 ```bash
-git clone git@github.com:GWinfinity/RosPaw.git
-cd RosPaw
+git clone git@github.com:GWinfinity/RosTofu.git
+cd RosTofu
 ```
 
 ### 2️⃣ Create Virtual Environment
@@ -67,13 +67,13 @@ source .venv/bin/activate  # Linux/macOS
 .venv\Scripts\activate     # Windows
 ```
 
-### 3️⃣ Install CoPaw
+### 3️⃣ Install Your Application
 
 ```bash
-# Install copaw (adjust based on your copaw installation method)
-uv pip install copaw
+# Install your application (example: tofu)
+uv pip install tofu
 # or
-pip install copaw
+pip install tofu
 ```
 
 ### 4️⃣ Build ROS2 Package
@@ -83,7 +83,7 @@ pip install copaw
 source /opt/ros/humble/setup.bash
 
 # Build
-colcon build --packages-select rospaw_bringup
+colcon build --packages-select rostofu_bringup
 
 # Source workspace
 source install/setup.bash
@@ -92,7 +92,7 @@ source install/setup.bash
 ### 5️⃣ Launch! 🎉
 
 ```bash
-ros2 launch rospaw_bringup copaw_launch.py
+ros2 launch rostofu_bringup tofu_launch.py
 ```
 
 ---
@@ -102,31 +102,31 @@ ros2 launch rospaw_bringup copaw_launch.py
 ### Control via Services
 
 ```bash
-# Start copaw
-ros2 service call /start_copaw std_srvs/srv/Trigger
+# Start the application
+ros2 service call /start_tofu std_srvs/srv/Trigger
 
-# Stop copaw  
-ros2 service call /stop_copaw std_srvs/srv/Trigger
+# Stop the application  
+ros2 service call /stop_tofu std_srvs/srv/Trigger
 
-# Restart copaw
-ros2 service call /restart_copaw std_srvs/srv/Trigger
+# Restart the application
+ros2 service call /restart_tofu std_srvs/srv/Trigger
 ```
 
 ### Monitor Status
 
 ```bash
-# Watch copaw status in real-time
-ros2 topic echo /copaw_status
+# Watch application status in real-time
+ros2 topic echo /tofu_status
 ```
 
 ### Run without Launch File
 
 ```bash
 # Direct node execution
-ros2 run rospaw_bringup copaw_node
+ros2 run rostofu_bringup tofu_node
 
 # With custom path
-ros2 run rospaw_bringup copaw_node --ros-args -p copaw_path:="/path/to/copaw"
+ros2 run rostofu_bringup tofu_node --ros-args -p tofu_path:="/path/to/your/app"
 ```
 
 ---
@@ -137,21 +137,21 @@ ros2 run rospaw_bringup copaw_node --ros-args -p copaw_path:="/path/to/copaw"
 
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
-| `copaw_path` | string | `""` | Path to copaw executable (auto-detected if empty) |
-| `working_directory` | string | `""` | Working directory for copaw process |
-| `auto_start` | bool | `true` | Auto-start copaw when node launches |
+| `tofu_path` | string | `""` | Path to your executable (auto-detected if empty) |
+| `working_directory` | string | `""` | Working directory for the process |
+| `auto_start` | bool | `true` | Auto-start when node launches |
 
 ### Launch with Custom Parameters
 
 ```bash
 # Linux
-ros2 launch rospaw_bringup copaw_launch.py \
-  copaw_path:="/home/user/RosPaw/.venv/bin/copaw" \
+ros2 launch rostofu_bringup tofu_launch.py \
+  tofu_path:="/home/user/RosTofu/.venv/bin/tofu" \
   auto_start:=true
 
 # Windows
-ros2 launch rospaw_bringup copaw_launch.py ^
-  copaw_path:="D:\\RosPaw\\.venv\\Scripts\\copaw.exe" ^
+ros2 launch rostofu_bringup tofu_launch.py ^
+  tofu_path:="D:\\RosTofu\\.venv\\Scripts\\tofu.exe" ^
   auto_start:=true
 ```
 
@@ -160,16 +160,16 @@ ros2 launch rospaw_bringup copaw_launch.py ^
 ## 🏗️ Project Structure
 
 ```
-RosPaw/
-├── 📁 rospaw_bringup/          # ROS2 package
+RosTofu/
+├── 📁 rostofu_bringup/          # ROS2 package
 │   ├── 📁 launch/
-│   │   └── copaw_launch.py     # Launch file
-│   ├── 📁 rospaw_bringup/
-│   │   └── copaw_node.py       # Main node implementation
-│   ├── package.xml             # ROS2 manifest
-│   └── setup.py                # Package setup
-├── 📄 pyproject.toml           # Python project config
-└── 📄 README.md                # This file
+│   │   └── tofu_launch.py       # Launch file
+│   ├── 📁 rostofu_bringup/
+│   │   └── tofu_node.py         # Main node implementation
+│   ├── package.xml              # ROS2 manifest
+│   └── setup.py                 # Package setup
+├── 📄 pyproject.toml            # Python project config
+└── 📄 README.md                 # This file
 ```
 
 ---
@@ -205,15 +205,14 @@ Distributed under the MIT License. See [LICENSE](LICENSE) for more information.
 
 ## 🙏 Acknowledgments
 
-- [CoPaw](https://github.com/copilot-extensions/copaw) — The AI assistant framework
-- [AgentScope](https://github.com/modelscope/agentscope) — Multi-agent framework
 - [ROS2](https://docs.ros.org/) — Robot Operating System
+- [uv](https://docs.astral.sh/uv/) — Fast Python package manager
 
 ---
 
 <div align="center">
 
-**[⬆ Back to Top](#-rospaw)**
+**[⬆ Back to Top](#-rostofu)**
 
 Made with ❤️ by GWinfinity
 

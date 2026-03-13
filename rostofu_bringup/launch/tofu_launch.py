@@ -1,5 +1,5 @@
 """
-Launch file for starting copaw ROS2 node.
+Launch file for starting tofu ROS2 node.
 """
 
 from launch import LaunchDescription
@@ -9,35 +9,35 @@ from launch_ros.actions import Node
 
 
 def generate_launch_description():
-    """Generate launch description for copaw node."""
+    """Generate launch description for tofu node."""
     
     # Declare launch arguments
-    copaw_path_arg = DeclareLaunchArgument(
-        'copaw_path',
+    tofu_path_arg = DeclareLaunchArgument(
+        'tofu_path',
         default_value='',
-        description='Path to copaw.exe executable (auto-detected if empty)'
+        description='Path to tofu executable (auto-detected if empty)'
     )
     
     working_dir_arg = DeclareLaunchArgument(
         'working_directory',
         default_value='',
-        description='Working directory for copaw process'
+        description='Working directory for tofu process'
     )
     
     auto_start_arg = DeclareLaunchArgument(
         'auto_start',
         default_value='true',
-        description='Automatically start copaw on node startup'
+        description='Automatically start tofu on node startup'
     )
     
-    # Create the copaw node
-    copaw_node = Node(
-        package='rospaw_bringup',
-        executable='copaw_node',
-        name='copaw_node',
+    # Create the tofu node
+    tofu_node = Node(
+        package='rostofu_bringup',
+        executable='tofu_node',
+        name='tofu_node',
         output='screen',
         parameters=[{
-            'copaw_path': LaunchConfiguration('copaw_path'),
+            'tofu_path': LaunchConfiguration('tofu_path'),
             'working_directory': LaunchConfiguration('working_directory'),
             'auto_start': LaunchConfiguration('auto_start'),
         }],
@@ -45,8 +45,8 @@ def generate_launch_description():
     )
     
     return LaunchDescription([
-        copaw_path_arg,
+        tofu_path_arg,
         working_dir_arg,
         auto_start_arg,
-        copaw_node,
+        tofu_node,
     ])
