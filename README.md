@@ -32,8 +32,8 @@ Whether you're building a smart robot application or integrating software into y
 
 | Feature | Description |
 |---------|-------------|
-| 🎛️ **Service Interface** | Control your app via `/start_tofu`, `/stop_tofu`, `/restart_tofu` services |
-| 📡 **Status Monitoring** | Track app state via `/tofu_status` topic |
+| 🎛️ **Service Interface** | Control copaw via `/start_copaw`, `/stop_copaw`, `/restart_copaw` services |
+| 📡 **Status Monitoring** | Track copaw state via `/copaw_status` topic |
 | 🔍 **Auto-Detection** | Automatically finds executable in `.venv` or system PATH |
 | ⚡ **Launch Files** | Ready-to-use ROS2 launch configurations |
 | 🐧 **Multi-Platform** | Native support for Windows and Linux |
@@ -92,7 +92,7 @@ source install/setup.bash
 ### 5️⃣ Launch! 🎉
 
 ```bash
-ros2 launch rostofu_bringup tofu_launch.py
+ros2 launch rostofu_bringup copaw_launch.py
 ```
 
 ---
@@ -102,31 +102,31 @@ ros2 launch rostofu_bringup tofu_launch.py
 ### Control via Services
 
 ```bash
-# Start the application
-ros2 service call /start_tofu std_srvs/srv/Trigger
+# Start copaw
+ros2 service call /start_copaw std_srvs/srv/Trigger
 
-# Stop the application  
-ros2 service call /stop_tofu std_srvs/srv/Trigger
+# Stop copaw  
+ros2 service call /stop_copaw std_srvs/srv/Trigger
 
-# Restart the application
-ros2 service call /restart_tofu std_srvs/srv/Trigger
+# Restart copaw
+ros2 service call /restart_copaw std_srvs/srv/Trigger
 ```
 
 ### Monitor Status
 
 ```bash
-# Watch application status in real-time
-ros2 topic echo /tofu_status
+# Watch copaw status in real-time
+ros2 topic echo /copaw_status
 ```
 
 ### Run without Launch File
 
 ```bash
 # Direct node execution
-ros2 run rostofu_bringup tofu_node
+ros2 run rostofu_bringup copaw_node
 
 # With custom path
-ros2 run rostofu_bringup tofu_node --ros-args -p tofu_path:="/path/to/your/app"
+ros2 run rostofu_bringup copaw_node --ros-args -p copaw_path:="/path/to/copaw"
 ```
 
 ---
@@ -137,7 +137,7 @@ ros2 run rostofu_bringup tofu_node --ros-args -p tofu_path:="/path/to/your/app"
 
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
-| `tofu_path` | string | `""` | Path to your executable (auto-detected if empty) |
+| `copaw_path` | string | `""` | Path to copaw executable (auto-detected if empty) |
 | `working_directory` | string | `""` | Working directory for the process |
 | `auto_start` | bool | `true` | Auto-start when node launches |
 
@@ -145,13 +145,13 @@ ros2 run rostofu_bringup tofu_node --ros-args -p tofu_path:="/path/to/your/app"
 
 ```bash
 # Linux
-ros2 launch rostofu_bringup tofu_launch.py \
-  tofu_path:="/home/user/RosTofu/.venv/bin/copaw" \
+ros2 launch rostofu_bringup copaw_launch.py \
+  copaw_path:="/home/user/RosTofu/.venv/bin/copaw" \
   auto_start:=true
 
 # Windows
-ros2 launch rostofu_bringup tofu_launch.py ^
-  tofu_path:="D:\\RosTofu\\.venv\\Scripts\\copaw.exe" ^
+ros2 launch rostofu_bringup copaw_launch.py ^
+  copaw_path:="D:\\RosTofu\\.venv\\Scripts\\copaw.exe" ^
   auto_start:=true
 ```
 
@@ -163,9 +163,9 @@ ros2 launch rostofu_bringup tofu_launch.py ^
 RosTofu/
 ├── 📁 rostofu_bringup/          # ROS2 package
 │   ├── 📁 launch/
-│   │   └── tofu_launch.py       # Launch file
+│   │   └── copaw_launch.py      # Launch file
 │   ├── 📁 rostofu_bringup/
-│   │   └── tofu_node.py         # Main node implementation
+│   │   └── copaw_node.py        # Main node implementation
 │   ├── package.xml              # ROS2 manifest
 │   └── setup.py                 # Package setup
 ├── 📄 pyproject.toml            # Python project config

@@ -32,8 +32,8 @@
 
 | 功能 | 描述 |
 |---------|-------------|
-| 🎛️ **服务接口** | 通过 `/start_tofu`, `/stop_tofu`, `/restart_tofu` 服务控制应用 |
-| 📡 **状态监控** | 通过 `/tofu_status` 话题追踪应用状态 |
+| 🎛️ **服务接口** | 通过 `/start_copaw`, `/stop_copaw`, `/restart_copaw` 服务控制 copaw |
+| 📡 **状态监控** | 通过 `/copaw_status` 话题追踪 copaw 状态 |
 | 🔍 **自动检测** | 自动在 `.venv` 或系统 PATH 中查找可执行文件 |
 | ⚡ **启动文件** | 开箱即用的 ROS2 启动配置 |
 | 🐧 **多平台** | 原生支持 Windows 和 Linux |
@@ -92,7 +92,7 @@ source install/setup.bash
 ### 5️⃣ 启动！🎉
 
 ```bash
-ros2 launch rostofu_bringup tofu_launch.py
+ros2 launch rostofu_bringup copaw_launch.py
 ```
 
 ---
@@ -102,31 +102,31 @@ ros2 launch rostofu_bringup tofu_launch.py
 ### 通过服务控制
 
 ```bash
-# 启动应用
-ros2 service call /start_tofu std_srvs/srv/Trigger
+# 启动 copaw
+ros2 service call /start_copaw std_srvs/srv/Trigger
 
-# 停止应用  
-ros2 service call /stop_tofu std_srvs/srv/Trigger
+# 停止 copaw  
+ros2 service call /stop_copaw std_srvs/srv/Trigger
 
-# 重启应用
-ros2 service call /restart_tofu std_srvs/srv/Trigger
+# 重启 copaw
+ros2 service call /restart_copaw std_srvs/srv/Trigger
 ```
 
 ### 监控状态
 
 ```bash
-# 实时查看应用状态
-ros2 topic echo /tofu_status
+# 实时查看 copaw 状态
+ros2 topic echo /copaw_status
 ```
 
 ### 不使用启动文件运行
 
 ```bash
 # 直接运行节点
-ros2 run rostofu_bringup tofu_node
+ros2 run rostofu_bringup copaw_node
 
 # 指定自定义路径
-ros2 run rostofu_bringup tofu_node --ros-args -p tofu_path:="/path/to/your/app"
+ros2 run rostofu_bringup copaw_node --ros-args -p copaw_path:="/path/to/copaw"
 ```
 
 ---
@@ -137,7 +137,7 @@ ros2 run rostofu_bringup tofu_node --ros-args -p tofu_path:="/path/to/your/app"
 
 | 参数 | 类型 | 默认值 | 描述 |
 |-----------|------|---------|-------------|
-| `tofu_path` | string | `""` | 可执行文件路径（留空则自动检测） |
+| `copaw_path` | string | `""` | copaw 可执行文件路径（留空则自动检测） |
 | `working_directory` | string | `""` | 进程工作目录 |
 | `auto_start` | bool | `true` | 节点启动时自动启动 |
 
@@ -145,12 +145,12 @@ ros2 run rostofu_bringup tofu_node --ros-args -p tofu_path:="/path/to/your/app"
 
 ```bash
 # Linux
-ros2 launch rostofu_bringup tofu_launch.py \
+ros2 launch rostofu_bringup copaw_launch.py \
   tofu_path:="/home/user/RosTofu/.venv/bin/tofu" \
   auto_start:=true
 
 # Windows
-ros2 launch rostofu_bringup tofu_launch.py ^
+ros2 launch rostofu_bringup copaw_launch.py ^
   tofu_path:="D:\\RosTofu\\.venv\\Scripts\\tofu.exe" ^
   auto_start:=true
 ```
@@ -163,9 +163,9 @@ ros2 launch rostofu_bringup tofu_launch.py ^
 RosTofu/
 ├── 📁 rostofu_bringup/          # ROS2 包
 │   ├── 📁 launch/
-│   │   └── tofu_launch.py       # 启动文件
+│   │   └── copaw_launch.py      # 启动文件
 │   ├── 📁 rostofu_bringup/
-│   │   └── tofu_node.py         # 主节点实现
+│   │   └── copaw_node.py        # 主节点实现
 │   ├── package.xml              # ROS2 清单
 │   └── setup.py                 # 包配置
 ├── 📄 pyproject.toml            # Python 项目配置
