@@ -41,10 +41,10 @@ setup(
         ],
     },
     zip_safe=True,
-    maintainer='user',
-    maintainer_email='user@example.com',
+    maintainer='GWinfinity Team',
+    maintainer_email='guoweist@foxmail.com',
     description='ROS2 package for launching copaw with natural language control',
-    license='MIT',
+    license='Apache-2.0',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [

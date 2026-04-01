@@ -4,7 +4,7 @@
   <name>rostofu_bringup</name>
   <version>0.2.0</version>
   <description>ROS2 package for launching copaw application</description>
-  <maintainer email="user@example.com">user</maintainer>
+  <maintainer email="guoweist@foxmail.com">GWinfinity Team</maintainer>
   <license>Apache-2.0</license>
 
   <depend>rclpy</depend>
