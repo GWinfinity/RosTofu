@@ -11,6 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: ros:humble-ros-base
+    defaults:
+      run:
+        shell: bash
     
     steps:
     - uses: actions/checkout@v3
