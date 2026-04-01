@@ -10,6 +10,10 @@
   <depend>rclpy</depend>
   <depend>std_msgs</depend>
   <depend>std_srvs</depend>
+  
+  <!-- 注意: copaw 需要手动安装，不在 rosdep 中 -->
+  <!-- pip install copaw -->
+  <!-- 详见: https://pypi.org/project/copaw/ -->
 
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>

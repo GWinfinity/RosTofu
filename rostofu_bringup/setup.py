@@ -21,6 +21,8 @@ setup(
     install_requires=[
         'setuptools',
         'aiohttp>=3.8.0',  # 异步 HTTP 客户端
+        # 注意: copaw 需要 pip 安装，不在 rosdep 中
+        # 'copaw>=1.0.0',  # 如需自动安装，取消注释
     ],
     extras_require={
         'voice': [
